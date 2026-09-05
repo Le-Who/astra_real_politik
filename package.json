@@ -1,0 +1,38 @@
+{
+  "name": "astra-realpolitik",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.28.2",
+  "engines": {
+    "node": ">=24.20.0 <25",
+    "pnpm": "10.28.2"
+  },
+  "scripts": {
+    "dev": "concurrently --kill-others --names api,web \"pnpm --filter @astra/api dev\" \"pnpm --filter @astra/web dev\"",
+    "build": "pnpm -r --if-present build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --max-warnings 0",
+    "test": "vitest run",
+    "test:changed": "vitest run --changed",
+    "test:e2e": "playwright test",
+    "content:validate": "tsx tools/validate-content.ts",
+    "eval:offline": "tsx tools/evals/offline.ts",
+    "eval:live": "tsx tools/evals/live.ts",
+    "verify:release": "tsx tools/verify-release.ts"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.63.0",
+    "@types/node": "24.13.3",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
+    "concurrently": "10.0.5",
+    "eslint": "10.10.0",
+    "tsx": "4.23.13",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.69.0",
+    "vite": "8.2.2",
+    "vitest": "5.0.0"
+  }
+}
