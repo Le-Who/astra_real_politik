@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Pinned geographic inputs for the contemporary map implementation plan",
+  "publisher": "Natural Earth",
+  "repository": "https://github.com/nvkelso/natural-earth-vector",
+  "release": "v5.1.2",
+  "commit": "f1890d9f152c896d250a77557a5751a93d494776",
+  "rawBaseUrl": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/f1890d9f152c896d250a77557a5751a93d494776/",
+  "license": "public-domain",
+  "licenseUrl": "https://www.naturalearthdata.com/about/terms-of-use/",
+  "verifiedAt": "2026-09-05",
+  "verification": "GitHub tag object and recursive tree checked; disputed-area GeoJSON fetched and inspected. Other payloads not downloaded in this planning step.",
+  "assets": [
+    {"role":"country-index","path":"geojson/ne_10m_admin_0_countries.geojson","gitBlobSha1":"5ebc66e25fc1af01edaebe9375c546655e04cf1e","bytes":13287234},
+    {"role":"territorial-envelope","path":"geojson/ne_10m_admin_0_map_units.geojson","gitBlobSha1":"003025bf947f0c083318dfdb86a69b8dd0678947","bytes":13526439},
+    {"role":"administrative-cells","path":"geojson/ne_10m_admin_1_states_provinces.geojson","gitBlobSha1":"4a8438f98ac7dfec7dc1739b1eaf91398ad33f22","bytes":40726851},
+    {"role":"claim-polygons","path":"geojson/ne_10m_admin_0_disputed_areas.geojson","gitBlobSha1":"20866d163d8e7557bb9808d286060229f79e2e42","bytes":701323},
+    {"role":"disputed-lines","path":"geojson/ne_10m_admin_0_boundary_lines_disputed_areas.geojson","gitBlobSha1":"5ceb37949bab9b2be8745caf7c67c8111bb679b5","bytes":183831},
+    {"role":"boundary-reference","path":"geojson/ne_10m_admin_0_boundary_lines_land.geojson","gitBlobSha1":"a4e4090820e0d95c23d55aefa6b5f1721552cc71","bytes":2284669},
+    {"role":"physical-land","path":"geojson/ne_10m_land.geojson","gitBlobSha1":"2d76878175b8054acd9c5a52917ee9ea59a36fc5","bytes":10157965},
+    {"role":"settlement-labels","path":"geojson/ne_10m_populated_places.geojson","gitBlobSha1":"376fb028c390a7a23213800ae4babaa6f534a0f3","bytes":19359003}
+  ]
+}

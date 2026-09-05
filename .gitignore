@@ -1,0 +1,19 @@
+# Local credentials and environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Dependencies, generated artifacts and local caches
+node_modules/
+dist/
+coverage/
+.cache/
+*.log
+playwright-report/
+test-results/
+
+# Operating system metadata
+.DS_Store
+Thumbs.db
