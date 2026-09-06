@@ -9,6 +9,12 @@
     "start": "node dist/main.js"
   },
   "dependencies": {
+    "@astra/ai": "workspace:*",
+    "@astra/db": "workspace:*",
+    "@astra/contracts": "workspace:*",
+    "@fastify/cookie": "11.1.2",
+    "@fastify/rate-limit": "11.2.0",
+    "zod": "4.5.4",
     "fastify": "5.12.3"
   }
 }

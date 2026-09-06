@@ -11,7 +11,7 @@ No permission is inferred to spend a provider key or publish infrastructure.
 - [x] T01: reproducible workspace and health/startup checks — commit cfa4513, clean-clone check passed; future content/eval/release tools explicitly remain unavailable.
 - [ ] T02: core contracts, scenario/AI envelopes and projection implemented; normalized-domain integration and broader negative coverage remain.
 - [x] T03 core persistence: actual PostgreSQL 18.6, atomic journal/projections/snapshots/checkpoint/outbox, 100-revision replay and failure/concurrency checks. See T03 evidence for integration/operations still pending.
-- [ ] T04: authentication/vault.
+- [ ] T04: private bootstrap/login, PostgreSQL sessions, Origin/CSRF, credential API and encrypted/session vault implemented and tested. Public OIDC remains next; see T04 evidence.
 - [ ] T05–T09: sourced geography, historical/contemporary packages, temporal knowledge/memory.
 - [ ] T10–T19: real AI orchestration, costs, commands, diplomacy and consequences.
 - [ ] T20–T30: map, XP desktop, complete game flows, editor, saves and recovery.
@@ -38,5 +38,6 @@ Docker/PostgreSQL are not installed globally, and WSL subsystem is not installed
 
 ## Next concrete work
 
-Next: T04 authentication/BYOK vault on the real PostgreSQL foundation. Continue T02 normalized-projection integration in parallel with its dependent T12/T18/T19 work (sequential execution, no agents). Resource, conflict, treaty and action effects currently fail closed in the core reducer with EXTERNAL_PROJECTION_REQUIRED; they are not implemented gameplay. The trusted external-validation hook is only an integration boundary, not proof of authorization implementation.
+Next: finish T04 public OIDC adapter (state/nonce/PKCE, identity mapping, callback replay/expiry validation), then continue T05 geography. Public mode currently fails closed; private HTTP is loopback-only. Test database and runtime smoke servers were stopped gracefully after verification.
+Continue T02 normalized-projection integration with its dependent T12/T18/T19 work (sequential execution, no agents). Resource, conflict, treaty and action effects currently fail closed in the core reducer with EXTERNAL_PROJECTION_REQUIRED; they are not implemented gameplay. The trusted external-validation hook is only an integration boundary, not proof of authorization implementation.
 T01 screenshot artifacts were inspected; full UX, content, live AI, deployment and release acceptance remain NOT RUN.

@@ -39,9 +39,11 @@ async function job(campaignId: string, key = randomUUID()) {
 }
 describe('PostgreSQL atomic campaign history', () => {
   it('applies migrations once and records their checksum', async () => {
+    const before = await pool.query('SELECT version, digest FROM schema_migrations ORDER BY version');
     await migrate(pool);
-    const result = await pool.query('SELECT version, digest FROM schema_migrations');
-    expect(result.rows).toHaveLength(1);
+    const result = await pool.query('SELECT version, digest FROM schema_migrations ORDER BY version');
+    expect(result.rows).toEqual(before.rows);
+    expect(result.rows.length).toBeGreaterThan(0);
     expect(result.rows[0]).toMatchObject({ version: '0001_core', digest: expect.stringMatching(/^[a-f0-9]{64}$/) });
   });
   it('allows only one concurrent commit at an expected revision', async () => {

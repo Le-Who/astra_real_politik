@@ -45,6 +45,18 @@ pnpm exec vitest run tests/tasks/T03.test.ts
 
 Тест создаёт и удаляет только собственный случайный schema namespace. Без выделенной БД с именем `astra_test*` он завершается ошибкой, а не пропускается. Для проверки на этой Windows-машине использованы portable-бинарники PostgreSQL 18.6, не Docker; подробности и команды — в [T03 evidence](docs/quality/evidence/T03.md).
 
+## Авторизация и ключи — текущая реализация
+
+`DEPLOYMENT_MODE=development` — только локальная оболочка и health, без игровых/auth endpoints. `pnpm dev` собирает зависимости API перед запуском.
+
+В режиме `private` задайте извне `DATABASE_URL`, `APP_ORIGIN` и случайный `BOOTSTRAP_TOKEN` (32–256 символов). Первый `POST /api/v1/auth/bootstrap` с JSON `{token}` создаёт владельца; повторный вход — `POST /api/v1/auth/login`. Токен не помещать в URL, localStorage или Git. UI входа ещё не создан. Сервер сам применяет миграции при старте private-режима.
+
+`GET /api/v1/session` выдаёт CSRF-токен для заголовка `x-csrf-token`; изменяющие запросы требуют точный Origin. Для logout отправляйте JSON `{}`. Все запросы ключей доверяются вашему серверу, а при будущей AI-генерации — также Google; сейчас провайдер ещё не подключён.
+
+`POST /api/v1/credentials`: `key`, `trustServer:true`, необязательный `mode` (по умолчанию session). Для persistent нужны также `persistentConsent:true` и внешний `VAULT_MASTER_KEY` — 32 случайных байта в base64. Список возвращает только маски/ID; DELETE отзывает ключ. Временные ключи не переживают restart; persistent хранится как AES-GCM envelope. HTTPS обязателен, кроме явно локального private-режима.
+
+Public/OIDC, пользовательская форма согласия и передача временного ключа отдельному worker ещё не завершены. Public-режим отказывает в запуске. Подробные результаты и ограничения: [T04](docs/quality/evidence/T04.md).
+
 Начать с [оглавления документации](docs/README.md). Основной маршрут разработки описан в [плане реализации](docs/superpowers/plans/2026-09-05-astra-realpolitik.md).
 
 Географические источники и их лицензии описаны отдельно в документации; исходные геоданные в текущую версию репозитория не включены.

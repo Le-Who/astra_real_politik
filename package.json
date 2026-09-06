@@ -9,7 +9,7 @@
     "pnpm": "10.28.2"
   },
   "scripts": {
-    "dev": "concurrently --kill-others --names api,web \"pnpm --filter @astra/api dev\" \"pnpm --filter @astra/web dev\"",
+    "dev": "pnpm --filter @astra/api... build && concurrently --kill-others --names api,web \"pnpm --filter @astra/api dev\" \"pnpm --filter @astra/web dev\"",
     "build": "pnpm -r --if-present build",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --max-warnings 0",
