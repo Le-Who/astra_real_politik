@@ -5,3 +5,5 @@ export * from './events.js';
 export * from './commands.js';
 export * from './ai.js';
 export * from './provider-schema.js';
+export * from './scenario.js';
+export * from './json.js';
