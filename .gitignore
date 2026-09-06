@@ -5,15 +5,26 @@
 *.pem
 *.key
 
-# Dependencies, generated artifacts and local caches
+# Dependencies (including workspace packages)
 node_modules/
-.worktrees/
-dist/
-coverage/
-.cache/
+
+# Local linked checkouts are separate Git worktrees, not project source folders.
+# Publish their commits through a branch; never add the nested checkout itself.
+/.worktrees/
+
+# Build output: scope to the actual output locations, not arbitrary source folders.
+/dist/
+/apps/*/dist/
+/packages/*/dist/
+*.tsbuildinfo
+
+# Local runtime data, downloads, databases and reports; keep source/content visible.
+/.cache/
+/coverage/
+/playwright-report/
+/test-results/
+/output/playwright/
 *.log
-playwright-report/
-test-results/
 
 # Operating system metadata
 .DS_Store
